@@ -736,7 +736,7 @@ async function runLoopTick() {
   ]);
 
   if (market.mntPrice > 0) {
-    logActivity('DataAgent', `MNT: $${market.mntPrice.toFixed(4)} (${market.mntChange24h.toFixed(2)}% 24h)`, 'done');
+    logActivity('DataAgent', `${process.env.VITE_NATIVE_TOKEN || 'BOT'}: $${market.mntPrice.toFixed(4)} (${market.mntChange24h.toFixed(2)}% 24h)`, 'done');
   }
 
   if (pools && pools.length > 0) {
@@ -1414,7 +1414,7 @@ async function distributeStakingRewards(agentId, earningsMnt) {
         updated_at: new Date().toISOString(),
       }).eq('id', stake.id);
     }
-    logActivity(`Agent #${agentId}`, `Staking rewards distributed: ${rewardPool.toFixed(4)} MNT to ${stakes.length} stakers`, 'done');
+    logActivity(`Agent #${agentId}`, `Staking rewards distributed: ${rewardPool.toFixed(4)} ${process.env.VITE_NATIVE_TOKEN || 'BOT'} to ${stakes.length} stakers`, 'done');
   } catch {}
 }
 
@@ -1430,7 +1430,7 @@ async function runEconomyCycle(agents, decisions, market) {
     const payAmount = parseFloat((baseAmount + perfBonus).toFixed(6));
     await updateAgentPnL(agent.id, 'pay', payAmount, 'Active agent base pay');
     await distributeStakingRewards(agent.id, payAmount);
-    economyLog.push('Agent #' + agent.id + ' earned ' + payAmount + ' MNT');
+    economyLog.push('Agent #' + agent.id + ' earned ' + payAmount + ' ' + (process.env.VITE_NATIVE_TOKEN || 'BOT'));
   }
 
   // Process Groq decisions for hire costs
@@ -1439,7 +1439,7 @@ async function runEconomyCycle(agents, decisions, market) {
     if (!agent) continue;
     if (d.action === 'hire_new') {
       await updateAgentPnL(d.agentId, 'hire_new', 0.001, d.reason);
-      economyLog.push('Agent #' + d.agentId + ' hire cost: 0.001 MNT');
+      economyLog.push('Agent #' + d.agentId + ' hire cost: 0.001 ' + (process.env.VITE_NATIVE_TOKEN || 'BOT'));
     }
   }
 
