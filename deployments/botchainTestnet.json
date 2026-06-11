@@ -1,0 +1,10 @@
+{
+  "network": "botchainTestnet",
+  "chainId": 968,
+  "deployedAt": "2026-06-09T15:00:18.379Z",
+  "contracts": {
+    "AgentRegistry": "0x665668987E800853D5864602b3Bf7d31E90D1262",
+    "ERC8004Identity": "0x3A5b77DA9B7fe13591D7ff700F9C6f176aCA0100",
+    "AgentXVault": "0xc02DaAC5d47a57997fd8f03804aE14F435d44BD6"
+  }
+}
