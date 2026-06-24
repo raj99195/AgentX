@@ -203,7 +203,7 @@ export function Settings() {
             <div>
               <p style={{ fontSize:'13px' }}>Network</p>
               <p style={{ fontSize:'10px', color:'#444', fontFamily:'JetBrains Mono', marginTop:'2px' }}>
-                BotChain Testnet Testnet · Chain ID 5003
+                BotChain Mainnet · Chain ID 677
               </p>
             </div>
             <span className="badge badge-outline">TESTNET</span>
